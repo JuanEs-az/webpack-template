@@ -1,3 +1,4 @@
+const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebPackPlugin = require('optimize-css-assets-webpack-plugin')
@@ -6,6 +7,12 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     mode: 'development',
+    devServer: {
+        port: 8080,
+        static: path.resolve(__dirname, 'dist'),
+        hot: false,
+        liveReload: true
+    },
     optimization: {
         minimizer: [
             new OptimizeCssAssetsWebPackPlugin()
